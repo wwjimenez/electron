@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "copy": "cp -r ../vue-ts/src/app ./src/",
+    "copy": "cp -r ../softphone_vue/src/app ./src/",
     "serve": "npm run copy && vue-cli-service serve",
     
     "build": "npm run copy && vue-cli-service build",
