@@ -8,7 +8,7 @@
     "build": "npm run copy && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "electron:build": "npm run copy && vue-cli-service electron:build",
-    "electron:serve": "vue-cli-service electron:serve",
+    "electron:serve": "npm run copy && vue-cli-service electron:serve",
     "pack-win": "npm run copy && vue-cli-service electron:build -p never --win",
     "pack-mac": "vue-cli-service electron:build  --macos",
     "postinstall": "electron-builder install-app-deps",
@@ -23,6 +23,7 @@
     "vue-class-component": "^8.0.0-0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@types/electron-devtools-installer": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",

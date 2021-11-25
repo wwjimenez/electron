@@ -1,51 +1,49 @@
 <template>
-  <div class="phone">
-    <h1>{{ msg }}</h1>
-    <h2>Demo: Audio Call - Outbound probando3</h2>
-      <div>
-        <ol>
-          <li>Place call to destination</li>
-          <li>Hangup call</li>
-        </ol>
+  
+    <div class="softphone">
+      <div class="header">
+        <span>Grupo Nethexa</span>
+        <span>{{msg}}</span>
       </div>
+      <div class="dialscreen header">
+        <div id="timespeak" class="timespeak"></div>
+        <input type="text" id="number" />
+        <audio id="remoteAudio" src="" controls style="display: none;">
+            <p>Your browser doesn't support HTML5 audio.</p>
+        </audio>
+        <div id="shownumber" class="shownumber"></div>
+      </div>
+      
       <ol>
-        <li><button id="connect">Connect</button> with <code><span id="server"></span></code></li>
-        <li><button id="hangup" >Hangup Call</button></li>
+        <li class="keypad">1</li>
+        <li class="keypad">2</li>
+        <li class="keypad">3</li>
+        <li class="keypad">4</li>
+        <li class="keypad">5</li>
+        <li class="keypad">6</li>
+        <li class="keypad">7</li>
+        <li class="keypad">8</li>
+        <li class="keypad">9</li>
+        <li class="keypad">*</li>
+        <li class="keypad">0</li>
+        <li class="keypad">#</li>
+        <li style="background-color: #323232 !important;"><i class="fas fa-rss"></i></li>
+        <li id="connect" style="background-color: #009900 !important;" ><i  class="fas fa-phone"></i></li>
+        <li id="hangup" style="background-color: #B04417 !important;"><i  class="fas fa-phone-slash"></i></li>
       </ol>
-      <audio id="remoteAudio" src="" controls >
-          <p>Your browser doesn't support HTML5 audio.</p>
-      </audio>
-      <div id="shownumber"></div>
-      <div class="dtmf">Marcar número: <span id="dtmf"></span></div>
-      <div>
-        <div>
-          <button class="keypad" id="1" >1</button>
-          <button class="keypad" id="2" >2</button>
-          <button class="keypad" id="3" >3</button>
-        </div>
-        <div>
-          <button class="keypad" id="4" >4</button>
-          <button class="keypad" id="5" >5</button>
-          <button class="keypad" id="6" >6</button>
-        </div>
-        <div>
-          <button class="keypad" id="7" >7</button>
-          <button class="keypad" id="8" >8</button>
-          <button class="keypad" id="9" >9</button>
-        </div>
-        <div>
-          <button class="keypad" id="*" >*</button>
-          <button class="keypad" id="0" >0</button>
-          <button class="keypad" id="#" >#</button>
-        </div>
-      </div>
+    </div>
+    <!-- /.container -->
+   
+      
 
     
-  </div>
+  
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 @Options({
   props: {
@@ -58,6 +56,7 @@ export default class Phone extends Vue {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped src="../assets/css/phone.css"><style> 
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -95,4 +94,7 @@ input {
 .dtmf {
   margin: 8px;
 }
+
+
+
 </style>

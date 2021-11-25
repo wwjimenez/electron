@@ -6,9 +6,8 @@ import { Options, Vue } from 'vue-class-component';
 import Phone from './components/Phone.vue';
 import { Web, UserAgent, UserAgentOptions, Inviter, SessionState, Session, Registerer, Invitation} from 'sip.js';
 /*** Declarando variables **/
- //    https://12ea-137-184-206-20.ngrok.io  https://1723-137-184-206-20.ngrok.io
 const server = "wss://asterisk.nethexa.com/ws";
-var arreglo:number[] = [];
+var arreglo:string[] = [];
 const remoteStream = new MediaStream();
 const uri = UserAgent.makeURI("sip:500@127.0.0.1");
 const transportOptions = {
@@ -131,7 +130,7 @@ export default class App extends Vue {
         if(!button){
           alert("vacio");
         }else{
-          arreglo.push(Number(button.id));
+          arreglo.push(String(button.textContent));
           shownumber();
         }
       });
@@ -164,6 +163,9 @@ export default class App extends Vue {
           break;
         }
       }
+      cleartextnumber();
+      cleararraynumber();
+
     }
     /* realizando llamada */
     function called(){
@@ -255,7 +257,46 @@ export default class App extends Vue {
       }
       mediaElement.srcObject = remoteStream;
       mediaElement.play();
+      var fin=window.setInterval(function(){
+        verifica_fin();
+      },1000);
+      console.log(mediaElement.currentTime);
+
+
+
+      // convertir segundos a horas:minutos:segundos
+      function pasar_a_HHMMSS(tiempos: string) {
+          let num_segs    = parseInt(tiempos, 10);
+          let horas   = Math.floor(num_segs / 3600);
+          let minutos = Math.floor((num_segs - (horas * 3600)) / 60);
+          let segundos = num_segs - (horas * 3600) - (minutos * 60);
+          let hour; let minute; let sec;
+          if (horas   < 10) {hour   = "0"+String(horas);} else { hour = horas}
+          if (minutos < 10) {minute = "0"+String(minutos);} else { minute = minutos}
+          if (segundos < 10) {sec = "0"+String(segundos);} else { sec = segundos}
+          var tiempo    = hour+':'+minute+':'+sec;
+          return tiempo;
+      }
+      function verifica_fin(){
+        if(mediaElement.ended){// cuando finaliza ó está en pausa.... detenemos el setInterval
+          clearInterval(fin);
+        }else{
+          var ta = Math.round(mediaElement.currentTime); // recuperamos el tiempo actual de reproducción y lo redondeamos a un entero
+          var segs = ta.toString(); // convertimos el tiempo actual a una cadena para poder formatearlo en hh:mm:ss
+          const mostrar = document.getElementById('timespeak');
+          if(!mostrar){
+            console.log("error en tiempo");
+          }else{
+            mostrar.innerHTML = pasar_a_HHMMSS(segs); // mandamos el tiempo actual a un div en pantalla
+          }
+          
+        }
+      }
+
+
+
     }
+    
   }
 
 }
@@ -268,6 +309,6 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

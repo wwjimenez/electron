@@ -97,6 +97,11 @@ app.on('ready', async () => {
     : 'app://./index.html',
     browserWindow: {
       alwaysOnTop: false,
+      movable: true,
+      minimizable: true,
+      maximizable: true,
+      height: 550,
+      title: 'Nethexa Telefonía'
     },
     tray,
     icon: __static + "/NethexaLogo.png"
