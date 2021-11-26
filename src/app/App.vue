@@ -1,4 +1,5 @@
 <template>
+  <div style="-webkit-app-region: drag; height: 2px;">&nbsp;</div>
   <Phone msg="Demo de WEBCTR por nethexa"/>
 </template>
 <script lang="ts">

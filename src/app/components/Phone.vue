@@ -1,5 +1,5 @@
 <template>
-  
+    
     <div class="softphone">
       <div class="header">
         <span>Grupo Nethexa</span>
@@ -53,6 +53,7 @@ import '@fortawesome/fontawesome-free/js/all.js'
 export default class Phone extends Vue {
   msg!: string
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -96,11 +96,17 @@ app.on('ready', async () => {
     ? process.env.WEBPACK_DEV_SERVER_URL 
     : 'app://./index.html',
     browserWindow: {
-      alwaysOnTop: false,
+      alwaysOnTop: true,
       movable: true,
-      minimizable: true,
       maximizable: true,
+      skipTaskbar: false,
       height: 550,
+      center: true,
+      focusable: true,
+      frame:false,
+      
+      
+      
       title: 'Nethexa Telefonía'
     },
     tray,
