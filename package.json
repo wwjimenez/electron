@@ -2,6 +2,10 @@
   "name": "vue-ts",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Nethexa",
+    "email": "wjimenez@nethexa.com"
+  },
   "scripts": {
     "copy": "cp -r ../softphone_vue/src/app ./src/",
     "serve": "npm run copy && vue-cli-service serve",
@@ -17,6 +21,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "electron-updater": "^4.6.1",
     "menubar": "^9.1.0",
     "sip.js": "^0.20.0",
     "vue": "^3.0.0",

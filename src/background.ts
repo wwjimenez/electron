@@ -4,6 +4,7 @@ import { app, protocol, BrowserWindow, Menu, Tray } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import {menubar} from 'menubar'
+import {autoUpdater} from 'electron-upater'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const iconPath =  __static + "/NethexaLogo.png";
 const shell = require('electron').shell
@@ -116,7 +117,7 @@ app.on('ready', async () => {
   mb.on('ready', () => {
     mb.showWindow();
   })
-
+  autoUpdater.checkForUpdatesAndNotify()
 })
 
 // Exit cleanly on request from parent process in development mode.
