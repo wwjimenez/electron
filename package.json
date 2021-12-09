@@ -1,10 +1,11 @@
 {
   "name": "vue-ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "author": {
-    "name": "Nethexa",
-    "email": "wjimenez@nethexa.com"
+  "author": "Nethexa <wjimenez@nethexa.com>",
+  "repository":{
+    "type" : "git",
+    "url" : "https://github.com/wwjimenez/electron"
   },
   "scripts": {
     "copy": "cp -r ../softphone_vue/src/app ./src/",
@@ -12,7 +13,9 @@
     "build": "npm run copy && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "electron:build": "npm run copy && vue-cli-service electron:build",
+    "publish:buildlocal": "npm run copy && vue-cli-service electron:build -p always",
     "electron:serve": "npm run copy && vue-cli-service electron:serve",
+    "publish:pack-win": "npm run copy && vue-cli-service electron:build  --win -p always",
     "pack-win": "npm run copy && vue-cli-service electron:build -p never --win",
     "pack-mac": "vue-cli-service electron:build  --macos",
     "postinstall": "electron-builder install-app-deps",
